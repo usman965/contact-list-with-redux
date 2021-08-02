@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-
+//import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+import "./style.scss"
+import Navbar from "./components/Navbar"
+import ContactItem from "./components/ContactItem";
+import { useDispatch, useSelector } from "react-redux";
+import TakeContact from "./components/TakeContact";
+import { Route, Switch } from "react-router-dom";
+import Home from "./components/Home";
+import UpdateContact from "./components/UpdateContact";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return ( <>
+  <div className="container-fluid bg-primary">
+  <Navbar/>
+  </div>
+  <div className="container">
+  <Switch>
+    <Route exact path="/" component={Home}/>
+    <Route exact path="/addcontact" component={TakeContact}/>
+    <Route exact path="/updatecontact/:id" component={UpdateContact}/>
+  </Switch>
+  </div>
+    </> );
 }
 
 export default App;
